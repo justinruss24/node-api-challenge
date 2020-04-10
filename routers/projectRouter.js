@@ -1,6 +1,7 @@
 const express = require('express');
 
 const Projects = require('../data/helpers/projectModel');
+const Actions = require('../data/helpers/actionModel');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -66,19 +67,28 @@ router.put('/:id', (req, res) => {
         })
 })
 
-router.post('/:id', (req, res) => {
-    Projects.insert(req.body)
-      .then((project) => {
-        if (project) {
-          res.status(201).json(project);
-        } else {
-          res.status(400).json({ message: "Error finding project" });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        res.status(500).json({ message: "Error posting project" });
-      });
-})
+router.post("/:id/actions", (req, res) => {
+  Actions.insert(req.body)
+    .then((action) => {
+      console.log(action);
+      res.status(201).json(action);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Unable to retrieve the created action" });
+    });
+});
+
+router.post("/", (req, res) => {
+  Projects.insert(req.body)
+    .then((resource) => {
+      console.log(resource);
+      res.status(201).json(resource);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: "Unable to retrieve resource" });
+    });
+});
 
 module.exports = router;

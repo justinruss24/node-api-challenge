@@ -39,15 +39,15 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
-
+    Middleware and Routers
 - [ ] Describe Middleware?
-
+    Middleware are functions that get the request and response and can perform different operations on them. Depending on the response, they can either move onto the next middleware or return a response to the client.
 - [ ] Describe a Resource?
-
+    In terms of a RESTful web API, everything is a resource. Each resource has a unique URL where it can be accessed. Resource management happens via HTTP methods/CRUD operations.
 - [ ] What can the API return to help clients know if a request was successful?
-
+    A successful response in the 200s.
 - [ ] How can we partition our application into sub-applications?
-
+    Routing is a way to partition our application into sub-applications by mapping incoming requests to servers to their appropriate request handler function. That way resources that share the same base route are partitioned into their own file away from the other resources of the application.
 ## Minimum Viable Product
 
 - [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.

@@ -25,6 +25,21 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  Actions.insert(req.body)
+    .then((action) => {
+      if (action) {
+        res.status(201).json(action);
+      } else {
+        res.status(400).json({ message: "Error finding action" });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ message: "Error posting action" });
+    });
+});
+
 router.put('/:id', (req, res) => {
     const changes = req.body;
 
