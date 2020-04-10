@@ -1,7 +1,7 @@
 const express = require('express');
 
 const actionsRouter = require('./routers/actionsRouter');
-// const projectsRouter = require();
+const projectsRouter = require('./routers/projectRouter');
 
 const server = express();
 
@@ -9,7 +9,7 @@ server.use(express.json());
 server.use(logger);
 
 server.use('/actions', actionsRouter);
-// server.use('/projects', projectsRouter);
+server.use('/projects', projectsRouter);
 
 server.get('/', (req, res) => {
     res.send(`<h2>Hello World</h2>`);
